@@ -23,6 +23,9 @@ connection.connect((err) => {
     init();
 });
 
+/**
+ * main function to start after db connection
+ */
 function init() {
     let result = []
     for (var i = 0; i < names.length; i++) {
@@ -122,6 +125,10 @@ function generateUserObj(name) {
     return result
 }
 
+/**
+ * function to add rows in the table
+ * @param {*} arr / /array of users to add
+ */
 function insertRows(arr) {
     // let sql = "INSERT INTO materials ( material_description,brand,category,pack_size,pack_type,mapping_material_id) VALUES ?";
     let sql = "INSERT INTO users ( user_name,email,hash,role,application_access,created_at) VALUES ?";
@@ -129,6 +136,9 @@ function insertRows(arr) {
     console.log('Inserted rows')
 }
 
+/**
+ * function to stop parsing and exit the process
+ */
 function stopParsing() {
     console.log(" Program terminated due to error while parsing");
     exit();
