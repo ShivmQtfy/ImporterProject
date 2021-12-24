@@ -1,18 +1,22 @@
 [
     {
-        "material_description": "Coca Cola",
-        "brand":"Coke",
-        "category":"PACKAGED WATER (PLAIN & ENRICHED)",
-        "pack_size":"16 OZ",
-        "pack_type":"Aluminium Can",
-        "mapping_material_id":650
+        "user_id": "jimmy@mail.com",
+        "customer_id":"2@customer.com",
+        "order_date":"2021-10-12 05:30:00.000"
     },
     {
-        "material_description": "Coca Cola",
-        "brand":"Coke",
-        "category":"PACKAGED WATER (PLAIN & ENRICHED)",
-        "pack_size":"16 OZ",
-        "pack_type":"Aluminium Can",
-        "mapping_material_id":66
+        "user_id": "nikhil@mail.com",
+        "customer_id":"2@customer.com",
+        "order_date":"2021-10-12 05:30:00.000"
+    },
+    {
+        "user_id": "alondra@mail.com",
+        "customer_id":"4@customer.com",
+        "order_date":"2021-10-12 05:30:00.000"
+    },
+    {
+        "user_id": "nikhil@mail.com",
+        "customer_id":"2@customer.com",
+        "order_date":"2021-10-12 05:30:00.000"
     }
 ]

@@ -1,11 +1,13 @@
 const csv = require('csv-parser')
 const path = require('path');
 const fs = require('fs')
-const file = 'material_data_final.csv';
-const results = [];
+const file = 'materials.json';
+var results = [];
 
+init();
 
-switch (path.extname(file)) {
+function init() {
+    switch (path.extname(file)) {
         case '.csv':
             //===============Checking CSV Data===================
             let rowCount = 2;
@@ -13,23 +15,24 @@ switch (path.extname(file)) {
             fs.createReadStream(file)
                 .pipe(csv())
                 .on('data', (data) => {
-                    if (Object.keys(data).length != 6) { //check if there are any missing values in csv
+                    if (Object.keys(data).length != 3) { //check if there are any missing values in csv
                         console.log('Missing important values at line ', rowCount, ' of CSV')
                         rowCount++;
                         console.log(data)
                         missingValue = true;
                     }
-                    if (!Number(data.mapping_material_id)) { //check if mapping material id is Integer
-                        console.log('Invalid mapping material ID on line ', rowCount, " of CSV")
+                    if (checkDuplicate(data)) { //check duplicate entry
+                        console.log('Duplicate entry on row ', rowCount, " of CSV with value=", data)
                         rowCount++;
                         missingValue = true;
                     }
-                    console.log(data.mapping_material_id)
+                    results.push(data)
+
                 })
                 .on('end', () => {
+                    // console.log(results)
                     if (!missingValue) {
                         console.log("File is ready to be inserted to DB")
-                        
                     }
                     else {
                         console.log("File is corrupt")
@@ -49,18 +52,21 @@ switch (path.extname(file)) {
                 const materials = JSON.parse(data);
                 let missingValue = false;
                 for (let i in materials) {
-                    if (!materials[i].material_description || !materials[i].mapping_material_id) {//check if any mandatory fields are missing
-                        console.log('Missing important key values')
+                    if (!materials[i].user_id || !materials[i].customer_id || !materials[i].order_date) {//check if any mandatory fields are missing
+                        console.log('Missing important key values at',i)
                         missingValue = true;
+                        break;
                     }
-                    if (!Number(data.mapping_material_id)) {// check if mapping material id is Integer
-                        console.log("Invalid mapping material ID")
+                    if (checkDuplicate(materials[i])) {// check if duplicate visit present
+                        console.log("Duplicate visit at=",i)
                         missingValue = true;
+                        break;
                     }
+                    results.push(materials[i])
                 }
                 if (!missingValue) {
                     console.log("File is ready to be inserted to DB")
-                    
+
                 }
                 else {
                     console.log("File is corrupt")
@@ -73,3 +79,16 @@ switch (path.extname(file)) {
             console.log('File extension not supported! Please provide data in .csv or .json format');
             break;
     }
+}
+
+function checkDuplicate(obj) {
+    for(var i in results){
+        let key = results[i]
+        if (obj['user_id'] == key['user_id'] &&
+            obj['customer_id'] == key['customer_id'] &&
+            new Date(obj['order_date']).getTime() == new Date(key['order_date']).getTime())
+            return true
+    }
+    return false
+}
+

@@ -1,8 +1,5 @@
-material_description,brand,category,pack_size,pack_type,mapping_material_id
-"16Z CN 24LS_AHA BLUBRY POM",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can","123"
-"16Z CN 24LS_AHA CTRS GRN T",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can",339
-"16Z CN 24LS_AHA LIM WMLN",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can","45"
-"16Z CN 24LS_AHA ORG GRPFRT",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can",340
-"16Z CN 24LS_AHA RBY ACAI",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can",473
-"16Z CN 24LS_AHA BLUBRY POM",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can",657
-"16Z CN 24LS_AHA CTRS GRN T",AHA-KO,"PACKAGED WATER (PLAIN & ENRICHED)","16 OZ","Aluminum Can",339
+user_id,customer_id,order_date
+"nikhil@mail.com","2@customer.com","2021-10-12 05:30:00.000"
+"jimmy@mail.com","3@customer.com","2021-10-12 05:30:00.000"
+"nikhil@mail.com","2@customer.com","2021-10-12 05:30:00.000"
+"alondra@mail.com","4@customer.com","2021-10-12 05:30:00.000"
